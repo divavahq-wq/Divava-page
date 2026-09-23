@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIVAVA Make-Up | Catálogo Oficial</title>
+    <style>
+        /* Estilos generales inspirados en la marca DIVAVA */
+        :root {
+            --bg-color: #0b0b0b;
+            --card-bg: #161616;
+            --gold-primary: #d4af37;
+            --gold-light: #f3e5ab;
+            --text-color: #e0e0e0;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Animaciones de entrada */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            border-bottom: 1px solid #222;
+            background: linear-gradient(to bottom, #000000, #111111);
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        /* Estilo del logotipo con destellos */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 5px;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--gold-primary);
+            animation: pulseLogo 2s infinite ease-in-out;
+        }
+
+        @keyframes pulseLogo {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .logo-text {
+            font-size: 2.8rem;
+            letter-spacing: 6px;
+            color: var(--gold-primary);
+            font-weight: bold;
+            margin: 0;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .tagline {
+            font-size: 1rem;
+            color: var(--gold-light);
+            letter-spacing: 2px;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--gold-primary);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+
+        /* Cuadrícula de productos */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 420px;
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-primary);
+        }
+
+        /* Contenedor de la imagen */
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background-color: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 15px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+
+        .product-ref {
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            color: var(--gold-light);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .btn-buy {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--gold-primary);
+            border: 1px solid var(--gold-primary);
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color 0.3s, color 0.3s;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .btn-buy:hover {
+            background-color: var(--gold-primary);
+            color: var(--bg-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #050505;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #1a1a1a;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <span class="logo-icon"></span>
+            <h1 class="logo-text">DIVAVA</h1>
+            <span class="logo-icon"></span>
+        </div>
+        <p class="tagline">Belleza que te define</p>
+    </header>
+
+    <div class="container">
+        <h2>CATÁLOGO DE PRODUCTOS</h2>
+        
+        <div class="products-grid">
+            <!-- Producto 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/fijador-trendy-cosmic.png" alt="fijador-trendy-cosmic">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. CN09</div>
+                        <div class="product-name">Fijador Trendy Cosmic Night</div>
+                        <div class="product-price">$27.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20el%20Fijador%20Trendy%20Cosmic%20Night" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/lip-gloss-madie.png" alt="lip gloss madie">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. BMT1748</div>
+                        <div class="product-name">Brillo Gloss Maddie</div>
+                        <div class="product-price">$15.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20el%20Brillo%20Gloss%20Maddie" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/encrespador-mini-luxe.png" alt="Encrespador mini luxe">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. EMT2504</div>
+                        <div class="product-name">Encrespador Mini Luxé</div>
+                        <div class="product-price">$16.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20el%20Encrespador%20Mini%20Luxé" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Producto 4 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/sombra-bloosom.png" alt="Sombra Blossom">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. SBT1880</div>
+                        <div class="product-name">Sombra Blossom</div>
+                        <div class="product-price">$15.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20la%20Sombra%20Blossom" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Producto 5 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/corrector-magic.png" alt="corrector-magic">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. CMT547</div>
+                        <div class="product-name">Corrector magic concealer</div>
+                        <div class="product-price">$12.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20el%20Corrector%20Magic%20congelar" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Producto 6 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/sombra-safari.png" alt="Sombra safari boom">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. SSB1867</div>
+                        <div class="product-name">Sombra safari boom</div>
+                        <div class="product-price">$15.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20el%20Sombra%20Safari%20boom" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Producto 7 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/kit-labios-furia.png" alt="kit de labios furia">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. DY2098</div>
+                        <div class="product-name">Kit de labios furia</div>
+                        <div class="product-price">$25.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20el%20kit%20de%20labios%20furia" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Producto 8 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/base-aqua.png" alt="Base aqua cobertura media">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. BAQ564</div>
+                        <div class="product-name">Base aqua cobertura media</div>
+                        <div class="product-price">$30.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20la%20base%20aqua" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Producto 9 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/kit-cepillo-barbie.png" alt="Kit cepillo Barbie Dreams">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. MTT2516</div>
+                        <div class="product-name">Kit cepillo Barbie dreams</div>
+                        <div class="product-price">$8.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20el%20kit%20de%20cepillo%20Barbie%20dreams" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Producto 10 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/rubor-bakery.png" alt="Rubor Bakery">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. RBT1769</div>
+                        <div class="product-name">Rubor Bakery</div>
+                        <div class="product-price">$15.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20el%20Rubor%20bakery" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Producto 11 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/pink-and-gold.png" alt="Set Pink-and-Gold">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. KPG2087</div>
+                        <div class="product-name">Set brillo y delineador Pink & Gold</div>
+                        <div class="product-price">$13.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20el%20set%20pink%20and%20gold" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Producto 12 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/crema-mantequilla-ora.png" alt="Crema Mantequilla Orange">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. CMO2402</div>
+                        <div class="product-name">Crema mantequilla orange</div>
+                        <div class="product-price">$29.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20la%20set%20crema%20mantequilla%20orange" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Producto 13 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/sombra-cookies.png" alt="Sombra cookies">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. CMO2402</div>
+                        <div class="product-name">Sombra cookies</div>
+                        <div class="product-price">$20.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20las%20Sombras%20cookies" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Producto 14 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/corrector-super-cool.png" alt="Corrector doble super cool trendy">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. SP98</div>
+                        <div class="product-name">Corrector doble super cool Trendy</div>
+                        <div class="product-price">$16.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20el%20corrector%20doble%20super%20cool" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Producto 15 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/gel-fijador-glow.png" alt="Gel fijador de cejas glow">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. CBG2167</div>
+                        <div class="product-name">Gel fijador de cejas glow</div>
+                        <div class="product-price">$15.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20el%20gel%20fijador%20de%20cejas%20glow" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Producto 16 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/pinky-new-lip.png" alt="kit rubor y gloss Pinky New">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. KPN2248</div>
+                        <div class="product-name">kit rubor y gloss Pinky New</div>
+                        <div class="product-price">$15.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20el%20kit%20rubor%20y%20gloss%20pinky%20new" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Producto 17 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/polvos-sueltos-jack.png" alt="polvos sueltos jack">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. DY2188</div>
+                        <div class="product-name">Polvos sueltos y compactos jack</div>
+                        <div class="product-price">$30.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20los%20polvos%20sueltos%20de%20kack" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Producto 18 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/papeles-bob.png" alt="papeletas matificantes Bob esponja">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. PMB2486</div>
+                        <div class="product-name">Papeletas matificantes Bob esponja</div>
+                        <div class="product-price">$11.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20las%20papeletas%20matificantes%20de%20Bob%20Esponja" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Producto 19 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/polvos-sueltos-arenita.png" alt="polvos sueltos arenita">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. PSA2483</div>
+                        <div class="product-name">polvos sueltos de arenita Bob esponja</div>
+                        <div class="product-price">$15.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20los%20polvos%20sueltos%20de%20Arenita" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Producto 20 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/lapices-toy-story.png" alt="lapiz de ojos y cejas inspirado en toy story 5">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. DYT2654</div>
+                        <div class="product-name">lapiz de ojos y cejas inspirado en toy story 5</div>
+                        <div class="product-price">$15.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20los%20lapices%20de%20toy%20story%20 5" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Producto 21 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/mini-rubor-lotso.png" alt="Mini rubor inspirado en lotso">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. DYT2552</div>
+                        <div class="product-name">Mini rubor inspirado en lotso</div>
+                        <div class="product-price">$20.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20el%20mini%20rubor%20inspirado%20en%20lotso" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Producto 22 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/lip-balm-aurora.png" alt="Lip balm Disney princesa">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. DY2212</div>
+                        <div class="product-name">Lip balm Disney princesa</div>
+                        <div class="product-price">$15.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20el%20lip%20balm%20Disney%20princesa" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+            <!-- Producto 23 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/kit-delinea-stich.png" alt="Kit de delineadores stitch">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. DY2081</div>
+                        <div class="product-name">Kit de delineadores Disney stitch</div>
+                        <div class="product-price">$25.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20el%20kit%20de%20delineadores%20Disney%20Stitch" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+            <!-- Producto 24 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/base-tinta-queen.png" alt="Base tinta queen">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. BTQ2580</div>
+                        <div class="product-name">Base tinta queen</div>
+                        <div class="product-price">$25.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20la%20base%20de%20tinta%20queen" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+            <!-- Producto 25 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Imagenes/tinta-gloss-cocoro.png" alt="Tinta gloss corazon">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-ref">REF. DGT1896</div>
+                        <div class="product-name">Tinta gloss corazon</div>
+                        <div class="product-price">$6.000</div>
+                    </div>
+                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20la%20tinta%20gloss%20corazon" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 DIVAVA Cosmeticos.</p>
+    </footer>
+
+</body>
+</html>
