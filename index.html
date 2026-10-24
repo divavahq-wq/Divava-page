@@ -202,6 +202,59 @@
             color: var(--bg-color);
         }
 
+
+        /* Etiqueta elegante para productos agotados */
+        .product-card.is-sold-out {
+            opacity: 0.78;
+            position: relative;
+        }
+
+        .product-card.is-sold-out:hover {
+            transform: none;
+            border-color: #444;
+        }
+
+        .product-card.is-sold-out .product-image {
+            position: relative;
+        }
+
+        .product-card.is-sold-out .product-image::after {
+            content: "AGOTADO";
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(11, 11, 11, 0.92);
+            color: var(--gold-light);
+            border: 1px solid var(--gold-primary);
+            padding: 7px 11px;
+            font-size: 0.72rem;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            border-radius: 3px;
+        }
+
+        .sold-out-price {
+            color: #888 !important;
+            text-decoration: line-through;
+        }
+
+        .btn-sold-out {
+            display: inline-block;
+            background-color: #242424;
+            color: #aaa;
+            border: 1px solid #444;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            box-sizing: border-box;
+            letter-spacing: 1px;
+            font-weight: 600;
+            cursor: not-allowed;
+        }
+
         footer {
             text-align: center;
             padding: 30px;
@@ -229,7 +282,7 @@
         
         <div class="products-grid">
             <!-- Producto 1 -->
-            <div class="product-card">
+            <div class="product-card is-sold-out">
                 <div class="product-image">
                     <img src="Imagenes/fijador-trendy-cosmic.png" alt="fijador-trendy-cosmic">
                 </div>
@@ -237,9 +290,9 @@
                     <div>
                         <div class="product-ref">REF. CN09</div>
                         <div class="product-name">Fijador Trendy Cosmic Night</div>
-                        <div class="product-price">$27.000</div>
+                        <div class="product-price sold-out-price">$27.000</div>
                     </div>
-                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20el%20Fijador%20Trendy%20Cosmic%20Night" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                    <span class="btn-sold-out" aria-label="Producto agotado">AGOTADO</span>
                 </div>
             </div>
 
@@ -289,7 +342,7 @@
             </div>
 
             <!-- Producto 5 -->
-            <div class="product-card">
+            <div class="product-card is-sold-out">
                 <div class="product-image">
                     <img src="Imagenes/corrector-magic.png" alt="corrector-magic">
                 </div>
@@ -297,9 +350,9 @@
                     <div>
                         <div class="product-ref">REF. CMT547</div>
                         <div class="product-name">Corrector magic concealer</div>
-                        <div class="product-price">$12.000</div>
+                        <div class="product-price sold-out-price">$12.000</div>
                     </div>
-                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20el%20Corrector%20Magic%20congelar" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                    <span class="btn-sold-out" aria-label="Producto agotado">AGOTADO</span>
                 </div>
             </div>
 
@@ -424,7 +477,7 @@
             </div>
 
             <!-- Producto 14 -->
-            <div class="product-card">
+            <div class="product-card is-sold-out">
                 <div class="product-image">
                     <img src="Imagenes/corrector-super-cool.png" alt="Corrector doble super cool trendy">
                 </div>
@@ -432,14 +485,15 @@
                     <div>
                         <div class="product-ref">REF. SP98</div>
                         <div class="product-name">Corrector doble super cool Trendy</div>
-                        <div class="product-price">$16.000</div>
+                        <div class="product-price sold-out-price">$16.000</div>
                     </div>
-                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20el%20corrector%20doble%20super%20cool" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                    <span class="btn-sold-out" aria-label="Producto agotado">AGOTADO</span>
                 </div>
             </div>
 
             <!-- Producto 15 -->
-            <div class="product-card">
+            <!-- Producto Agotado -->
+            <div class="product-card is-sold-out">
                 <div class="product-image">
                     <img src="Imagenes/gel-fijador-glow.png" alt="Gel fijador de cejas glow">
                 </div>
@@ -447,9 +501,10 @@
                     <div>
                         <div class="product-ref">REF. CBG2167</div>
                         <div class="product-name">Gel fijador de cejas glow</div>
-                        <div class="product-price">$15.000</div>
+                        <div class="product-price sold-out-price">$15.000</div>
                     </div>
-                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20el%20gel%20fijador%20de%20cejas%20glow" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                    <!-- Botón cambiado a estado Agotado (sin enlace de WhatsApp) -->
+                    <span class="btn-sold-out" aria-label="Producto agotado">AGOTADO</span>
                 </div>
             </div>
 
@@ -544,17 +599,17 @@
             </div>
 
             <!-- Producto 22 -->
-            <div class="product-card">
+            <div class="product-card is-sold-out">
                 <div class="product-image">
                     <img src="Imagenes/lip-balm-aurora.png" alt="Lip balm Disney princesa">
                 </div>
                 <div class="product-info">
                     <div>
                         <div class="product-ref">REF. DY2212</div>
-                        <div class="product-name">Lip balm Disney princesa</div>
+                        <div class="product-name">Lip Balm Princesa Aurora</div>
                         <div class="product-price">$15.000</div>
                     </div>
-                    <a href="https://wa.me/573232703481?text=Hola,%20estoy%20interesad@%20en%20el%20lip%20balm%20Disney%20princesa" target="_blank" class="btn-buy">Pedir por WhatsApp</a>
+                    <span class="btn-sold-out" aria-label="Producto agotado">AGOTADO</span>
                 </div>
             </div>
             <!-- Producto 23 -->
